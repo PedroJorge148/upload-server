@@ -90,7 +90,11 @@ export async function appRoutes(app: FastifyInstance) {
         }),
       )
     } else {
-      await promisify(fs.unlink)(uploadFolder.concat(`/${upload.key}`))
+      try {
+        await promisify(fs.unlink)(uploadFolder.concat(`/${upload.key}`))
+      } catch (err) {
+        console.log(err)
+      }
     }
 
     await prisma.upload.delete({
