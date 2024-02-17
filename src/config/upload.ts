@@ -49,7 +49,13 @@ const multerConfig: MulterConfig = {
     fileSize: 5 * 1024 * 1024, // 5mb
   },
   fileFilter: (_, file, cb) => {
-    const allowedMimes = ['image/jpeg', 'image/pjpeg', 'image/png', 'image/gif']
+    const allowedMimes = [
+      'image/jpeg',
+      'image/pjpeg',
+      'image/png',
+      'image/gif',
+      'image/svg',
+    ]
 
     if (allowedMimes.includes(file.mimetype)) {
       cb(null, true)
